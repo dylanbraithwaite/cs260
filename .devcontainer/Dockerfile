@@ -5,6 +5,7 @@ ARG VARIANT="jammy"
 FROM mcr.microsoft.com/vscode/devcontainers/base:0-${VARIANT}
 
 RUN apt-get update && export DEBIAN_FRONTEND=noninteractive \
-    && apt-get -y install --no-install-recommends ghc
+    && apt-get -y install --no-install-recommends ghc curl \
+    && (curl --proto '=https' --tlsv1.2 -sSf https://get-ghcup.haskell.org | sh)
     
 USER vscode
